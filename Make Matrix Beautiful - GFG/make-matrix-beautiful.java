@@ -93,18 +93,10 @@ class Solution {
             //maxi=Math.max(sum,maxi);
         }
         
-        int ans2=0;
-        for(int j=0;j<n;j++){
-             long  sum=0;
-            for(int i=0;i<n;i++)
-            sum+=matrix[i][j];
-            ans2+=maxi-sum;
-
-        }
+       
         
         
-        if(ans2>ans)
-        return ans+(ans2-ans);
+       
         return ans;
     }
 }
