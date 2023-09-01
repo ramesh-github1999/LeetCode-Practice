@@ -17,7 +17,7 @@ public:
         
         int mini=newIntervals[0];
         int maxi=newIntervals[1];
-        while(i<n && intervals[i][0]<=newIntervals[1] && intervals[i][1]>=newIntervals[0]){
+        while(i<n && intervals[i][0]<=newIntervals[1]){
             mini=min(intervals[i][0],mini);
             maxi=max(maxi,intervals[i][1]);
             i++;
