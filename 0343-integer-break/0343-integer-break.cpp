@@ -1,23 +1,13 @@
 class Solution {
 public:
     int integerBreak(int n) {
-        int maxi=0;
-        for(int i=2;i<=n;i++){
-            int q=n/i;
-            int r=n%i;
-            int ans=1;
-            int cnt=0;
-            while(cnt<i-r){
-                ans*=q;
-                cnt++;
-            }
-            while(cnt<i){
-                ans*=(q+1);
-                cnt++;
-            }
-            maxi=max(ans,maxi);
+        if(n==2) return 1;
+        if(n==3) return 2;
+        int pro=1;
+        while(n>4){
+            pro*=3;
+            n-=3;
         }
-        return maxi;
-        
+        return pro*n;
     }
 };
