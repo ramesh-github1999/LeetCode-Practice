@@ -22,12 +22,12 @@ class Solution {
         int index=0;
         int ans=n;
         for(int num:st) v[index++]=num;
+        int j=0;
         for(int i=0;i<v.length;i++){
-            int left=v[i];
-            int right=left+n-1;
-            int j=binarySearch(v,right);
+            while(j<v.length && v[j]<v[i]+n)
+                j++;
             int count=j-i;
-            ans=Math.min(ans,n-1-count);
+            ans=Math.min(n-count,ans);
            // cout<<j<<endl;
         }
         return ans;
