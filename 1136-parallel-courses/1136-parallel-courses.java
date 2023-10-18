@@ -1,7 +1,7 @@
 class Solution {
     public int minimumSemesters(int n, int[][] relations){
         int []indegree=new int [n+1];
-        ArrayList<ArrayList<Integer>> graph=new ArrayList<>(n+1);
+        ArrayList<ArrayList<Integer>> graph=new ArrayList<>();
         for(int i=0;i<=n;i++) graph.add(new ArrayList<>());
         for(int i=0;i<relations.length;i++){
             indegree[relations[i][1]]++;
