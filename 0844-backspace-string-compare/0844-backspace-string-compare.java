@@ -17,8 +17,8 @@ class Solution {
                else break;
             }
             if(i>=0 && j>=0 && s.charAt(i)!=t.charAt(j)) return false;
-            if ((i >= 0) != (j >= 0)){
-                System.out.println(i+" "+j);
+            if (i<0 && j>=0 || j<0 && i>=0){
+               // System.out.println(i+" "+j);
                 return false;
             }
             j--;i--;
