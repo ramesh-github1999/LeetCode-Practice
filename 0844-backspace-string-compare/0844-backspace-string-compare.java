@@ -1,22 +1,32 @@
 class Solution {
-      public String remove(String s){
-        int count=0;
-        String str="";
-        for(int i=s.length()-1;i>=0;i--){
-            if(s.charAt(i)=='#') count++;
-            else {
-                if(count>0) count--;
-                else str+=s.charAt(i);
-            }
-        }
-        return str;
-    }
+      
      public boolean backspaceCompare(String s, String t){
-       return remove(s).equals(remove(t));
+        int i=s.length()-1;
+        int j=t.length()-1;
+        int skipS=0;
+        int skipT=0;
+        while(i>=0 || j>=0){
+            while(i>=0){
+                if(s.charAt(i)=='#') {skipS++; i--;}
+                else if(skipS>0) {skipS--;i--;}
+               else  break;
+             }
+            while(j>=0){
+                if(t.charAt(j)=='#') {skipT++; j--;}
+                else if(skipT>0) {skipT--; j--;}
+               else break;
+            }
+            if(i>=0 && j>=0 && s.charAt(i)!=t.charAt(j)) return false;
+            if ((i >= 0) != (j >= 0)){
+                System.out.println(i+" "+j);
+                return false;
+            }
+            j--;i--;
+
+        }
+        return true; 
 
     }
    
 }
-// a 0
-// a 0
 
