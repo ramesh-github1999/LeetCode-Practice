@@ -1,18 +1,18 @@
 class Solution {
     static String []l={"","","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
     public List<String> res=new ArrayList<>();
-    public  void fun(String digits,String ans,int i){
-        if(i==digits.length()) {
+    public void fun(String que,String ans){
+        if(que.length()==0){
             res.add(ans);
             return;
         }
-        int index=digits.charAt(i)-'0';
-        String str=l[index];
-        for(int j=0;j<str.length();j++) {
-            //ans += str.charAt(j);
-            fun(digits, ans+str.charAt(j), i + 1);
+        
+        int first=que.charAt(0)-'0';
+        String roq=que.substring(1,que.length());
+        String chcode=l[first];
+        for(int i=0;i<chcode.length();i++){
+            fun(roq,ans+chcode.charAt(i));
         }
-
     }
 
     public List<String> letterCombinations(String digits) {
@@ -21,7 +21,7 @@ class Solution {
           //  return l;
             return new ArrayList<>();
         }
-        fun(digits,"",0);
+        fun(digits,"");
         return res;
     }
 }
