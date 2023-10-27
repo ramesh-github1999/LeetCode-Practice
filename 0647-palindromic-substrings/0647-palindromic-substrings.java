@@ -1,30 +1,31 @@
 class Solution {
-    static Map<String,Boolean> mp=new HashMap<>();
-    public static boolean isPalindrome(String s){
-         if(mp.containsKey(s)) return mp.get(s);
-        
-        int n=s.length();
-        for(int i=0;i<n/2;i++){
-            if(s.charAt(i)!=s.charAt(n-1-i)){
-                mp.put(s,false);
-                return false;
-            }
-        }
-        mp.put(s,true);
-        return true;
-    }
+    
     public int countSubstrings(String s) {
-        String que="";
-     
-         int n=s.length();
+       int n=s.length();
+        int dp[][]=new int[n][n];
+        
         int cnt=0;
-        for (int i = 0; i < n; i++) {
-            String str="";
-            for(int j=i;j<n;j++){
-                str+=s.charAt(j);
-                if(isPalindrome(str)) cnt++;
+       
+       for (int j=0;j<n;j++) {
+            for (int i = 0; i < n; i++) {
+                int gap=j-i;
+                if(gap<0) dp[i][j]=0;
+                else if(gap==0) dp[i][j]=1;
+                else if(gap==1){
+                    if(s.charAt(i)==s.charAt(j)) dp[i][j]=1;
+                    else dp[i][j]=0;
+                }
+                else{
+                    if(s.charAt(i)==s.charAt(j) && dp[i+1][j-1]==1) dp[i][j]=1;
+                    else dp[i][j]=0;
+                }
+                if(dp[i][j]==1) cnt++;
+
             }
-        }
+       }
+        
+         
+       
         return cnt;
     }
 }
