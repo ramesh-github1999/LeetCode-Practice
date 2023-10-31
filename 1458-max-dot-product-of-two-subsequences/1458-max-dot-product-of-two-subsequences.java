@@ -17,18 +17,6 @@ class Solution {
                 }
             }
         }
-      /*  for(int i=0;i<n;i++){
-            for(int j=0;j<m;j++){
-                System.out.print(dp[i][j]+" ");
-            }
-            System.out.println();
-        }*/
-        int maxi=Integer.MIN_VALUE;
-        for (int i=n-1;i>=0;i--) {
-            for (int j = m - 1; j >= 0; j--) {
-                maxi = Math.max(dp[i][j], maxi);
-            }
-        }
-        return maxi;
+        return dp[0][0];
     }
 }
