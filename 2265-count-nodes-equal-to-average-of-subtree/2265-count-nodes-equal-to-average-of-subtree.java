@@ -14,20 +14,18 @@
  * }
  */
 class Solution {
-    int cnt=0;
-    int countNode(TreeNode root){
-        if(root==null) return 0;
-        return 1+countNode(root.left)+countNode(root.right);
-    }
-    int dfs(TreeNode root){
-        if(root==null) return 0;
-        int sum=root.val+dfs(root.left)+dfs(root.right);
-        int count=countNode(root);
-        if(sum/count==root.val) cnt++;
-        return sum;
-    }
+    int count=0;
+     int [] fun(TreeNode root){
+         if(root==null) return new int[]{0,0};
+        int []left=fun(root.left);
+        int [] right=fun(root.right);
+        int sum=root.val+left[0]+right[0];
+        int totalCount=1+left[1]+right[1];
+        if(sum/totalCount==root.val) count++;
+        return new int[] {sum,totalCount};
+     }
     public int averageOfSubtree(TreeNode root) {
-       int k= dfs(root);
-        return cnt;
+       fun(root);
+        return count;
     }
 }
