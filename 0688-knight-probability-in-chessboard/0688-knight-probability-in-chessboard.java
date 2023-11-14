@@ -1,18 +1,38 @@
 class Solution {
-         double dp[][][];
-    int di[]={1,2,1,2,-1,-1,-2,-2};
-    int dj[]={2,1,-2,-1,2,-2,1,-1};
-    double fun(int i,int j,int k,int n){
-        if(k<0 || i<0 || j<0 || j>=n || i>=n) return 0;
-        if(k==0) return 1;
-        if(dp[i][j][k]!=0) return dp[i][j][k];
-        for (int m=0;m<8;m++){
-            dp[i][j][k]+=fun(i+di[m],j+dj[m],k-1,n)/8.0;
-        }
-        return dp[i][j][k];
-    }
+       
     public double knightProbability(int n, int k, int row, int column) {
-       dp= new double[n][n][k+1];
-       return fun(row,column,k,n);
+        double curr[][]=new double[n][n];
+        double next[][]=new double[n][n];
+        curr[row][column]=1;
+        int di[]={1,2,1,2,-1,-1,-2,-2};
+        int dj[]={2,1,-2,-1,2,-2,1,-1};
+        for (int step = 0; step <k ; step++) {
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j <n; j++) {
+                    if(curr[i][j]!=0){
+                        for(int y=0;y<8;y++){
+                            int ni=i+di[y];
+                            int nj=j+dj[y];
+                            if(ni>=0 && ni<n && nj>=0 && nj<n){
+                                next[ni][nj]+=curr[i][j]/8.0;
+                            }
+                        }
+                    }
+                }
+            }
+            double next2[][]=new double[n][n];
+            curr=next;
+            next=next2;
+
+        }
+        double ans=0;
+        for (int i = 0; i <n ; i++) {
+            for (int j = 0; j <n ; j++) {
+                ans+=curr[i][j];
+            }
+        }
+        return ans;
+
     }
+
 }
