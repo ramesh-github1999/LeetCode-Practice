@@ -7,9 +7,7 @@ class Solution {
         if(k==0) return 1;
         if(dp[i][j][k]!=0) return dp[i][j][k];
         for (int m=0;m<8;m++){
-            int ni=i+di[m];
-            int nj=j+dj[m];
-            dp[i][j][k]+=fun(ni,nj,k-1,n)/8.0;
+            dp[i][j][k]+=fun(i+di[m],j+dj[m],k-1,n)/8.0;
         }
         return dp[i][j][k];
     }
