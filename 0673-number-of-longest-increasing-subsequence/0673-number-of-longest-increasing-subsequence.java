@@ -19,6 +19,7 @@ class Solution {
                 }
             }
         }
+      
         int maxLen=0;
         for (int i = 0; i < n; i++) {
             maxLen=Math.max(maxLen,len[i]);
