@@ -1,18 +1,12 @@
 class Solution {
 public:
-    int maxSatisfaction(vector<int>& nums) {
-        sort(nums.begin(),nums.end());
-        int maxi=0;
-        int n=nums.size();
-        for(int i=0;i<n;i++){
-            int sum=0;
-            int curr=1;
-            for(int j=i;j<n;j++){
-                sum+=nums[j]*curr;
-                curr++;
-            }
-            maxi=max(sum,maxi);
+    int maxSatisfaction(vector<int>& A) {
+       sort(A.begin(), A.end());
+        int res = 0, total = 0, n = A.size();
+        for (int i = n - 1; i >= 0 && A[i] > -total; --i) {
+            total += A[i];
+            res += total;
         }
-        return maxi;
+        return res;
     }
 };
