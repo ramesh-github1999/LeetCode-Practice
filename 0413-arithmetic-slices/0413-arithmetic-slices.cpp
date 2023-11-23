@@ -11,8 +11,7 @@ public:
                 int d2=nums[j]-nums[j-1];
                 if(d1==d2) {
                     ans++;
-                  //  cout<<i<<" "<<j<<" "<<d1<<endl;
-                  //  break;
+                  
                 }
                
                 else break;
