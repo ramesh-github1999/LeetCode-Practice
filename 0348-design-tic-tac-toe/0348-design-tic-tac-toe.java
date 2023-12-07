@@ -4,64 +4,43 @@ class TicTacToe {
     public TicTacToe(int n) {
           v=new int[n][n];
     }
-   boolean rowCheck(int v[][]){
+   boolean rowCheck(int v[][],int row,int col){
+        int k=v[row][col];
         int n=v.length;
-        // row check
-        for (int i = 0; i < n; i++) {
-             int k=v[i][0];
-             if(k==0) continue;
-            for (int j = 0; j < n; j++) {
-                if (v[i][j] != k) {
-                    break;
-                }
-                if (j == n - 1) return true;
-            }
-        }
-        return false;
+        for(int j=0;j<n;j++) if(v[row][j]!=k) return false;
+        return true;
     }
 
-    // colum check
-    boolean columnCheck(int v[][]){
+    boolean columnCheck(int v[][],int row,int col){
+        int k=v[row][col];
         int n=v.length;
-        for(int j=0;j<n;j++){
-          int k=v[0][j];
-          if(k==0) continue;
-            for(int i=0;i<n;i++){
-                if(v[i][j]!=k) break;
-                if (i==n-1) return true;
-            }
-        }
-        return false;
+        for(int i=0;i<n;i++) if(v[i][col]!=k) return false;
+        return true;
     }
 
-    // digonal
+    boolean diagonalCheck(int v[][],int row,int col){
+        int k=v[row][col];
+        for(int i=0;i<v.length;i++){
+            if(v[i][i]!=k) return false;
+        }
+        return true;
+    }
 
-    boolean diagonalCheck(int v[][]){
-        int k=v[0][0];
+    boolean AntiDiagonalCheck(int v[][],int row,int col){
         int n=v.length;
-        if(k!=0){
-        for(int i=0;i<n;i++){
-            if(v[i][i]!=k) break;
-            if(i==n-1) return true;
-        }
-        }
-
-        k=v[0][n-1];
-        if(k!=0){
+        int k=v[row][col];
         for(int i=0,j=n-1;i<n && j>=0;i++,j--){
-          //  System.out.println(i+" "+j);
+            //  System.out.println(i+" "+j);
             if(v[i][j]!=k) return false;
-            if(i==n-1)return true;
         }
-        }
-        return false;
+        return true;
     }
 
     public int move(int row, int col, int player) {
-       v[row][col]=player;
-      //     System.out.println(diagonalCheck(v));
-          if(rowCheck(v) || columnCheck(v) || diagonalCheck(v)) return player;
-          else return 0;
+        v[row][col] = player;
+        //     System.out.println(diagonalCheck(v));
+        if (rowCheck(v,row,col) || columnCheck(v,row,col) || diagonalCheck(v,row,col) || AntiDiagonalCheck(v,row,col)) return player;
+        else return 0;
     }
 }
 
