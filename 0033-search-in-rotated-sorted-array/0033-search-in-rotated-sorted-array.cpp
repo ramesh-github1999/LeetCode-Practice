@@ -34,7 +34,8 @@ public:
         }
         int pivot=pivotElement(nums,0,n-1);
       //  cout<<pivot;
-        if(tar<=nums[n-1]) return BinarySearch(nums,pivot,n-1,tar);
+        int ans= BinarySearch(nums,pivot,n-1,tar);
+        if(ans!=-1) return ans;
         else return BinarySearch(nums,0,pivot-1,tar);
     }
 };
