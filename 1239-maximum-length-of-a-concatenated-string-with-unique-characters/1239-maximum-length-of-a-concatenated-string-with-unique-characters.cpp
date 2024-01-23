@@ -2,7 +2,7 @@ class Solution {
 public:
     int maxi=0;
     bool check (string s){
-        map<char,int>mp;
+        unordered_map<char,int>mp;
         for(auto it:s) mp[it]++;
         return mp.size()==s.size();
     }
