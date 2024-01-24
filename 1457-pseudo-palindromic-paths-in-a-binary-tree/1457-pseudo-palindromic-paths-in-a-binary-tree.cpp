@@ -22,17 +22,19 @@ public:
         return true;
     }
     
-    void fun(TreeNode *root, vector<int>mp){
+    void fun(TreeNode *root, vector<int>&mp){
         if(root==NULL) {
             return;
         }
          mp[root->val]++;
         if(!root->left && !root->right) {
             if(checkPalindrome(mp)) cnt++;
+             mp[root->val]--;
             return;
         }
       if(root->left)  fun(root->left,mp);
       if(root->right)  fun(root->right,mp);
+        mp[root->val]--;
     
     }
     int pseudoPalindromicPaths (TreeNode* root) {
