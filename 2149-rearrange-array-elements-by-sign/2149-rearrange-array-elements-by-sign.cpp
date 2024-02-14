@@ -7,12 +7,12 @@ public:
             else b.push_back(nums[i]);
         }
         int i=0,j=0, k=0;
-        while(i<a.size() && j<b.size()){
+        while(i<a.size() || j<b.size()){
            if(k%2==0) ans.push_back(a[i++]);   
             else ans.push_back(b[j++]);  
             k++;
         }
-        ans.push_back(b[j]);
+      //  ans.push_back(b[j]);
         return ans;
         
     }
