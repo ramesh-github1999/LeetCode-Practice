@@ -1,16 +1,15 @@
 class Solution {
 public:
-    #define pp pair<int,int>
     int findLeastNumOfUniqueInts(vector<int>& arr, int k) {
         map<int,int>mp;
         for(auto it:arr) mp[it]++;
-        priority_queue<pp,vector<pp>,greater<pp>>pq;
+        priority_queue<int,vector<int>,greater<int>>pq;
         for(auto it:mp){
-            pq.push({it.second,it.first});
+            pq.push(it.second);
         }
         while(pq.size()>0){
-            if(pq.top().first<=k) {
-                k-=pq.top().first;
+            if(pq.top()<=k) {
+                k-=pq.top();
                 pq.pop();
             }
             else return pq.size();
